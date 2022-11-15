@@ -10,6 +10,7 @@ void Menu_Draw(void) {
     VDP_drawText("Press A to play pong", 12, 12);
     VDP_drawText("Press B to play tetris", 12, 13);
     VDP_drawText("Press C to play pang", 12, 14);
+    VDP_drawText("Press S to play demo", 12, 15);
 }
 
 void Menu_PlayMinigame(char *id) {
@@ -31,6 +32,7 @@ int main(bool hardReset) {
         if (joy_state & BUTTON_A) Menu_PlayMinigame("pong");
         if (joy_state & BUTTON_B) Menu_PlayMinigame("tetris");
         if (joy_state & BUTTON_C) Menu_PlayMinigame("pang");
+        if (joy_state & BUTTON_START) Menu_PlayMinigame("Slipstream");
 
         SYS_doVBlankProcess();
     }
