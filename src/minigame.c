@@ -1,17 +1,20 @@
+#include <genesis.h>
 #include "minigame.h"
-#include "genesis.h"
 
-extern int num_minigames;
-extern struct minigame minigame_registry[];
+#define _MINIGAME(game, msg) extern void game##_Main(void);
+MINIGAMES
+#undef _MINIGAME
 
-struct minigame *Minigame_GetById(char *id) {
-    u8 i;
+#define _MINIGAME(game, msg)    \
+{                               \
+    .title = #msg,              \
+    .run = game##_Main          \
+},                              \
 
-    for (i=0; i<num_minigames; ++i) {
-        if (strcmp(id, minigame_registry[i].id) == 0) {
-            return &minigame_registry[i];
-        }
-    }
+const Minigame_t const minigame_registry[] = {
+    MINIGAMES
+};
 
-    return NULL;
+Minigame_t const * Minigame_GetById(const minigameId id) {
+    return &minigame_registry[id];
 }
