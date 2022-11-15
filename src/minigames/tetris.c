@@ -1,5 +1,4 @@
 #include "genesis.h"
-#include "../minigame.h"
 
 void Tetris_Main(void)
 {

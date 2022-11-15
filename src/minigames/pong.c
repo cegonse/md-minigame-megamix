@@ -1,5 +1,4 @@
 #include "genesis.h"
-#include "../minigame.h"
 
 void Pong_Main(void)
 {
