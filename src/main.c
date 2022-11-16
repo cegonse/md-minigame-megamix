@@ -1,8 +1,8 @@
-#include "genesis.h"
+#include <genesis.h>
 #include "minigame.h"
 
-
-void Menu_Draw(void) {
+static void Menu_Draw(void)
+{
     VDP_clearText(4, 12, 32);
     VDP_clearText(4, 13, 32);
     VDP_clearText(4, 14, 32);
@@ -13,26 +13,26 @@ void Menu_Draw(void) {
     VDP_drawText("Press S to play demo", 12, 15);
 }
 
-void Menu_PlayMinigame(char *id) {
-    struct minigame *current_minigame;
-
-    current_minigame = Minigame_GetById(id);
-    current_minigame->run();
+static void Menu_PlayMinigame(const minigameId id)
+{
+    Minigame_GetById(id)->run();
     Menu_Draw();
 }
 
-int main(bool hardReset) {
-    u16 joy_state;
-
+int main(bool hardReset)
+{
     Menu_Draw();
 
-    while (1) {
-        joy_state = JOY_readJoypad(JOY_1);
+    while (1)
+    {
+        u16 joy_state = JOY_readJoypad(JOY_1);
 
-        if (joy_state & BUTTON_A) Menu_PlayMinigame("pong");
-        if (joy_state & BUTTON_B) Menu_PlayMinigame("tetris");
-        if (joy_state & BUTTON_C) Menu_PlayMinigame("pang");
-        if (joy_state & BUTTON_START) Menu_PlayMinigame("Slipstream");
+        if (joy_state & BUTTON_A)
+            Menu_PlayMinigame(Pong);
+        if (joy_state & BUTTON_B)
+            Menu_PlayMinigame(Tetris);
+        if (joy_state & BUTTON_C)
+            Menu_PlayMinigame(Pang);
 
         SYS_doVBlankProcess();
     }

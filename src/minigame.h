@@ -1,16 +1,19 @@
 #pragma once
 
-#define AddMinigame(ID, TITLE, RUN) \
-    { \
-        .id = #ID, \
-        .title = TITLE, \
-        .run = RUN \
-    }
+#include <genesis.h>
+#include "minigames_registry.h"
 
-typedef struct minigame {
-    char *id;
+typedef struct minigame
+{
     char *title;
     void (*run)(void);
-} Minigame;
+} Minigame_t;
 
-struct minigame *Minigame_GetById(char *id);
+#define _MINIGAME(game, title) game,
+typedef enum id
+{
+    MINIGAMES
+} minigameId;
+#undef _MINIGAME
+
+Minigame_t const * Minigame_GetById(const minigameId id);
