@@ -13,7 +13,7 @@
 
 
 #define MINIGAMES                                        \
-_MINIGAME(Pong,        "The best game")                  \
-_MINIGAME(Tetris,      "Russia's favourite game")        \
-_MINIGAME(Pang,        "Bubble breaking time")           \
-_MINIGAME(Slipstream,  "Slipstream description")
+_MINIGAME(Pong,        "Pong")                  \
+_MINIGAME(Tetris,      "Tetris")        \
+_MINIGAME(Pang,        "Pang")           \
+_MINIGAME(Slipstream,  "Slipstream")

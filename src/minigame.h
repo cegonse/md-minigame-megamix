@@ -16,4 +16,8 @@ typedef enum id
 } minigameId;
 #undef _MINIGAME
 
-Minigame_t const * Minigame_GetById(const minigameId id);
+Minigame_t const *Minigame_GetById(const minigameId id);
+
+Minigame_t const *Minigame_GetAll(void);
+
+u8 Minigame_Count(void);
