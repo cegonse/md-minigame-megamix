@@ -5,4 +5,4 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      run: make
+      - run: make
