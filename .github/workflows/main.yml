@@ -8,4 +8,4 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Compile ROM
-        run: sudo make
+        run: sudo make ci
