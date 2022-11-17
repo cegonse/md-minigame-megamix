@@ -8,5 +8,4 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Compile ROM
-        working-directory: md-minigame-megamix
         run: sudo make
