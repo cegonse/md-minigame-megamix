@@ -7,6 +7,5 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: ls -la ${{ github.workspace }}
-#      - run: cd ${{ github.workspace }}
-#      - run: make
+      - run: cd ${{ github.workspace }}
+      - run: sudo make
