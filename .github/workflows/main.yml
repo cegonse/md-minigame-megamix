@@ -5,5 +5,4 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - name: Compile ROM
-      - run: make
+      run: make
