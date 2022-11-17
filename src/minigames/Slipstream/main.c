@@ -143,7 +143,7 @@ waitMs(1000);
 	}
 
 	SYS_setVIntCallback(0);
-	VDP_init();
 	waitMs(1000);
+	VDP_init();
 	// VDP_init();
 }

@@ -38,7 +38,7 @@ _Vecteurs_68K:
         dc.l    _INT
         dc.l    _EXTINT
         dc.l    _INT
-        dc.l    hintCaller
+        dc.l    _INT
         dc.l    _INT
         dc.l    _VINT
         dc.l    _INT
