@@ -1,9 +1,7 @@
+ECHO off
 REM Execute this file form project's root, not inside bin folder
 REM Needs SGDK_PATH to be defined
 REM Optionally, you can define MD_EMULATOR_PATH, when build is done, it will pass the rom path to emulator as first parameter
-
-
-ECHO off
 
 IF DEFINED SGDK_PATH (
     ECHO Using %SGDK_PATH% as SGDK path
