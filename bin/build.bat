@@ -1,3 +1,8 @@
+REM Execute this file form project's root, not inside bin folder
+REM Needs SGDK_PATH to be defined
+REM Optionally, you can define MD_EMULATOR_PATH, when build is done, it will pass the rom path to emulator as first parameter
+
+
 ECHO off
 
 IF DEFINED SGDK_PATH (
@@ -11,6 +16,7 @@ SET "GDK_WIN=%SGDK_PATH%"
 SET "XGCC_WIN=%GDK_WIN%\x68k-gcc\bin"
 SET "PATH=%GDK_WIN%\bin;%XGCC_WIN%;%PATH%"
 
+REM "clean" option instead of "release" will clean all output files
 %GDK_WIN%\bin\make -C . release -f %GDK_WIN%\makefile.gen
 
 ECHO BUILD COMPLETED!
