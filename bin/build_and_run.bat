@@ -1,6 +1,6 @@
 ECHO off
 
-bin\build.bat
+CALL bin\build.bat
 
 IF DEFINED MD_EMULATOR_PATH (
     ECHO Launching rom in %MD_EMULATOR_PATH%
