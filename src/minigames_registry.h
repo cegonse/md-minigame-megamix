@@ -16,4 +16,5 @@
 _MINIGAME(Pong,        "Pong")                  \
 _MINIGAME(Tetris,      "Tetris")        \
 _MINIGAME(Pang,        "Pang")           \
-_MINIGAME(Slipstream,  "Slipstream")
+_MINIGAME(Slipstream,  "Slipstream") \
+_MINIGAME(MDInvaders,  "MDInvaders")

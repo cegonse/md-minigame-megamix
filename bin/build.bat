@@ -19,9 +19,5 @@ REM "clean" option instead of "release" will clean all output files
 
 ECHO BUILD COMPLETED!
 
-IF DEFINED MD_EMULATOR_PATH (
-    ECHO Launching rom in %MD_EMULATOR_PATH%
-     %MD_EMULATOR_PATH% .\out\rom.bin
-)
 
 exit /B 0
