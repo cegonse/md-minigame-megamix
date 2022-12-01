@@ -20,9 +20,21 @@ static void Menu_DrawTitle(void)
     VDP_drawText(minigames[selected_minigame_index].title, 2, 10);
 }
 
+static void resetState(void)
+{
+    SYS_setVIntCallback(0);
+	waitMs(500);
+	VDP_init();
+    SPR_init();
+	waitMs(500);
+}
+
 static void Menu_PlayMinigame(void)
 {
+    resetState();
     minigames[selected_minigame_index].run();
+    resetState();
+
     Menu_Draw();
     Menu_DrawTitle();
 }

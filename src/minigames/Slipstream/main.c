@@ -141,9 +141,4 @@ waitMs(1000);
 		SPR_update();
 		SYS_doVBlankProcess();
 	}
-
-	SYS_setVIntCallback(0);
-	waitMs(1000);
-	VDP_init();
-	// VDP_init();
 }
