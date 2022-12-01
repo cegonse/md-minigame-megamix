@@ -8,10 +8,10 @@ static u8 num_minigames;
 
 static u16 vram_pos = 16;
 
-static void drawImageXY ( Image *image, u16 palette, u16 x, u16 y )
+static void drawImageXY ( u16 plan, u16 prio, Image *image, u16 palette, u16 x, u16 y )
 {
     SYS_disableInts();
-    VDP_drawImageEx ( BG_A, image, TILE_ATTR_FULL ( palette, 0, 0, 0, vram_pos ), x, y, 0, 0 );
+    VDP_drawImageEx ( plan, image, TILE_ATTR_FULL ( palette, prio, 0, 0, vram_pos ), x, y, 0, 0 );
     SYS_enableInts();
     PAL_setPalette(palette, image->palette->data, DMA);
 
@@ -25,13 +25,11 @@ static void Menu_Draw(void)
     VDP_setHorizontalScroll(BG_A, 0);
     VDP_setVerticalScroll(BG_A, 0);
 
-    drawImageXY(&title_screen, PAL0, 0, 0);
+    drawImageXY(BG_A, 0, &title_screen, PAL0, 0, 0);
+    drawImageXY(BG_B, 1, &select_game, PAL1, 9, 2);
 
-    VDP_clearText(2, 2, 32);
-    VDP_clearText(2, 3, 32);
-
-    VDP_drawText("Left, right: select minigame", 2, 2);
-    VDP_drawText("Start: play", 2, 3);
+    VDP_drawText("Left, right: select minigame", 2, 24);
+    VDP_drawText("Start: play", 2, 25);
 }
 
 static void Menu_DrawTitle(void)
