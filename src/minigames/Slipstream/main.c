@@ -48,6 +48,8 @@ void drawCocheXY ( s16 x, s16 y )
 
 void Slipstream_Main ( )
 {
+	vram_pos = 16;
+
 	VDP_setScrollingMode ( HSCROLL_LINE, VSCROLL_PLANE );
 
 waitMs(1000);
@@ -141,9 +143,4 @@ waitMs(1000);
 		SPR_update();
 		SYS_doVBlankProcess();
 	}
-
-	SYS_setVIntCallback(0);
-	waitMs(1000);
-	VDP_init();
-	// VDP_init();
 }

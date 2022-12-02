@@ -13,8 +13,6 @@
 
 
 #define MINIGAMES                                        \
-_MINIGAME(Pong,        "Pong")                  \
-_MINIGAME(Tetris,      "Tetris")        \
-_MINIGAME(Pang,        "Pang")           \
 _MINIGAME(Slipstream,  "Slipstream") \
 _MINIGAME(MDInvaders,  "MDInvaders")
+//_MINIGAME(Sample,        "Sample")

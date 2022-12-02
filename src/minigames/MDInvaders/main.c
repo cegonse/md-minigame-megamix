@@ -49,7 +49,7 @@ void updateInvaders(s8 updateAnimation)
     for(s16 i = 0; i < INVADER_NUMBER; ++ i)
     {
         struct Invader* invader = &invaders[i];
-        
+
         s16 newX = invader->sprite->x - 0x80 + invader->dirX;
 
         if(newX <= 0)
@@ -93,11 +93,7 @@ void updateInvaders(s8 updateAnimation)
 
 void MDInvaders_Main()
 {
-    waitMs(500);
-
     u16 joy_state;
-
-    SPR_init();
 
     //PAL_setColors(0, (u16*)palette_black, 64, CPU);
 
@@ -120,7 +116,7 @@ void MDInvaders_Main()
     VDP_setTextPalette(PAL3);
 
     fix16 timeCounter = 0;
-    
+
     while(1)
     {
         //VDP_drawImageEx(BG_A, &background, TILE_ATTR_FULL(PAL1, 0, 0, 0, 0), 0, 0, 1, 0);
@@ -177,8 +173,4 @@ void MDInvaders_Main()
         VDP_showCPULoad();
         SYS_doVBlankProcess();
     }
-
-    SYS_setVIntCallback(0);
-	waitMs(500);
-	VDP_init();
 }
