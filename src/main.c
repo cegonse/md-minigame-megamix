@@ -65,7 +65,7 @@ int main(bool hardReset)
     num_minigames = Minigame_Count();
     selected_minigame_index = 0;
 
-y    Menu_Draw();
+    Menu_Draw();
     Menu_DrawTitle();
 
     while (1)
