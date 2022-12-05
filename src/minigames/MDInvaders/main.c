@@ -1,4 +1,6 @@
 #include <genesis.h>
+#include "menu.h"
+#include "game.h"
 #include "MDInvaders.h"
 #include "aabb.h"
 
@@ -93,84 +95,90 @@ void updateInvaders(s8 updateAnimation)
 
 void MDInvaders_Main()
 {
-    u16 joy_state;
-
-    //PAL_setColors(0, (u16*)palette_black, 64, CPU);
-
-    face.sprite = SPR_addSprite(&invader03, 50, 50, TILE_ATTR(PAL2, TRUE, FALSE, FALSE));
-    aabb_update(&face.aabb, 50, 50, face.sprite->definition->w, face.sprite->definition->h);
-
-    //createInvaders();
-
-    PAL_setPalette(PAL0, background.palette->data, DMA);
-    VDP_drawImageEx(BG_A, &background, TILE_ATTR_FULL(PAL0, 0, 0, 0, 5), 0, 0, 0, TRUE);
-
-    PAL_setPalette(PAL1, box_32x32.palette->data, DMA);
-    Sprite* box1 = SPR_addSprite(&box_32x32, 100, 50, TILE_ATTR(PAL1, TRUE, FALSE, FALSE));
-    struct AABB aabb1;
-
-    Sprite* box2 = SPR_addSprite(&box_32x32, 100, 100, TILE_ATTR(PAL1, TRUE, FALSE, FALSE));
-    struct AABB aabb2;
-    aabb_update(&aabb2, box2->x, box2->y, box2->definition->w, box2->definition->h);
-
-    VDP_setTextPalette(PAL3);
-
-    fix16 timeCounter = 0;
-
-    while(1)
+    while(TRUE)
     {
-        //VDP_drawImageEx(BG_A, &background, TILE_ATTR_FULL(PAL1, 0, 0, 0, 0), 0, 0, 1, 0);
-
-        joy_state = JOY_readJoypad(JOY_1);
-
-        if (joy_state & BUTTON_START)
-        {
-            break;
-        }
-
-        ++ timeCounter;
-
-        //updateInvaders(timeCounter >= 8);
-
-        if(timeCounter >= 8)
-        {
-            timeCounter = 0;
-        }
-
-        if(joy_state & BUTTON_LEFT)
-        {
-            -- box1->x;
-        }
-        else if(joy_state & BUTTON_RIGHT)
-        {
-            ++ box1->x;
-        }
-
-        if(joy_state & BUTTON_UP)
-        {
-            -- box1->y;
-        }
-        else if(joy_state & BUTTON_DOWN)
-        {
-            ++ box1->y;
-        }
-
-        aabb_update(&aabb1, box1->x, box1->y, box1->definition->w, box1->definition->h);
-
-        if(aabb_areOverlapping(&aabb1, &aabb2))
-        {
-             VDP_drawText("COLLISION!", 10, 5);
-        }
-        else
-        {
-            VDP_clearText(10, 5, 20);
-        }
-
-        //VDP_showFPS(SYS_getFPSAsFloat());
-
-        SPR_update();
-
-        VDP_showCPULoad();
-        SYS_doVBlankProcess();
+        MDInvadersMenu();
+        MDInvadersGame();
     }
+
+    // u16 joy_state;
+
+    // //PAL_setColors(0, (u16*)palette_black, 64, CPU);
+
+    // face.sprite = SPR_addSprite(&invader03, 50, 50, TILE_ATTR(PAL2, TRUE, FALSE, FALSE));
+    // aabb_update(&face.aabb, 50, 50, face.sprite->definition->w, face.sprite->definition->h);
+
+    // //createInvaders();
+
+    // PAL_setPalette(PAL0, background.palette->data, DMA);
+    // VDP_drawImageEx(BG_A, &background, TILE_ATTR_FULL(PAL0, 0, 0, 0, 5), 0, 0, 0, TRUE);
+
+    // PAL_setPalette(PAL1, box_32x32.palette->data, DMA);
+    // Sprite* box1 = SPR_addSprite(&box_32x32, 100, 50, TILE_ATTR(PAL1, TRUE, FALSE, FALSE));
+    // struct AABB aabb1;
+
+    // Sprite* box2 = SPR_addSprite(&box_32x32, 100, 100, TILE_ATTR(PAL1, TRUE, FALSE, FALSE));
+    // struct AABB aabb2;
+    // aabb_update(&aabb2, box2->x, box2->y, box2->definition->w, box2->definition->h);
+
+    // VDP_setTextPalette(PAL3);
+
+    // fix16 timeCounter = 0;
+
+    // while(1)
+    // {
+    //     //VDP_drawImageEx(BG_A, &background, TILE_ATTR_FULL(PAL1, 0, 0, 0, 0), 0, 0, 1, 0);
+
+    //     joy_state = JOY_readJoypad(JOY_1);
+
+    //     if (joy_state & BUTTON_START)
+    //     {
+    //         break;
+    //     }
+
+    //     ++ timeCounter;
+
+    //     //updateInvaders(timeCounter >= 8);
+
+    //     if(timeCounter >= 8)
+    //     {
+    //         timeCounter = 0;
+    //     }
+
+    //     if(joy_state & BUTTON_LEFT)
+    //     {
+    //         -- box1->x;
+    //     }
+    //     else if(joy_state & BUTTON_RIGHT)
+    //     {
+    //         ++ box1->x;
+    //     }
+
+    //     if(joy_state & BUTTON_UP)
+    //     {
+    //         -- box1->y;
+    //     }
+    //     else if(joy_state & BUTTON_DOWN)
+    //     {
+    //         ++ box1->y;
+    //     }
+
+    //     aabb_update(&aabb1, box1->x, box1->y, box1->definition->w, box1->definition->h);
+
+    //     if(aabb_areOverlapping(&aabb1, &aabb2))
+    //     {
+    //          VDP_drawText("COLLISION!", 10, 5);
+    //     }
+    //     else
+    //     {
+    //         VDP_clearText(10, 5, 20);
+    //     }
+
+    //     //VDP_showFPS(SYS_getFPSAsFloat());
+
+    //     SPR_update();
+
+    //     VDP_showCPULoad();
+    //     SYS_doVBlankProcess();
+    // }
 }
