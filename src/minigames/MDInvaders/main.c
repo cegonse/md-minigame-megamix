@@ -97,7 +97,7 @@ void MDInvaders_Main()
 {
     while(TRUE)
     {
-        //MDInvadersMenu();
+        MDInvadersMenu();
         MDInvadersGame();
     }
 
