@@ -42,7 +42,6 @@ static void resetState(void)
 {
     SYS_setVIntCallback(0);
 	waitMs(500);
-    waitMs(100);
 	VDP_init();
     SPR_init();
 	waitMs(500);
@@ -66,7 +65,7 @@ int main(bool hardReset)
     num_minigames = Minigame_Count();
     selected_minigame_index = 0;
 
-    Menu_Draw();
+y    Menu_Draw();
     Menu_DrawTitle();
 
     while (1)
