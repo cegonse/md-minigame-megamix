@@ -57,8 +57,8 @@ bool MDInvadersMenu()
 
     VDP_setScrollingMode(HSCROLL_PLANE, VSCROLL_PLANE);
 
-    VDP_drawImageEx(BG_B, &MenuBackground, TILE_ATTR_FULL(PAL0, 0, 0, 0, TILE_USER_INDEX), 0, 0, FALSE, TRUE);
-    VDP_drawImageEx(BG_A, &Title, TILE_ATTR_FULL(PAL1, 0, 0, 0, MenuBackground.tileset->numTile + TILE_USER_INDEX), 0, 0, FALSE, TRUE);
+    VDP_drawImageEx(BG_B, &MenuBackground, TILE_ATTR_FULL(PAL0, 0, 0, 0, TILE_USERINDEX), 0, 0, FALSE, TRUE);
+    VDP_drawImageEx(BG_A, &Title, TILE_ATTR_FULL(PAL1, 0, 0, 0, MenuBackground.tileset->numTile + TILE_USERINDEX), 0, 0, FALSE, TRUE);
 
     setupText();
 

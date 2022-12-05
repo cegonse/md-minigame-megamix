@@ -36,7 +36,7 @@ void setupGameBackground()
 
     VDP_setScrollingMode(HSCROLL_TILE, VSCROLL_PLANE);
 
-    VDP_drawImageEx(BG_B, &GameBackground, TILE_ATTR_FULL(PAL0, 0, 0, 0, TILE_USER_INDEX), 0, 0, TRUE, TRUE);
+    VDP_drawImageEx(BG_B, &GameBackground, TILE_ATTR_FULL(PAL0, 0, 0, 0, TILE_USERINDEX), 0, 0, TRUE, TRUE);
 
     VDP_clearPlane(BG_A, TRUE);
 }
