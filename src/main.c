@@ -41,10 +41,12 @@ static void Menu_DrawTitle(void)
 static void resetState(void)
 {
     SYS_setVIntCallback(0);
-	waitMs(500);
+	//waitMs(500);
+    waitMs(100);
 	VDP_init();
     SPR_init();
-	waitMs(500);
+	//waitMs(500);
+    waitMs(100);
 }
 
 static void Menu_PlayMinigame(void)
@@ -65,40 +67,43 @@ int main(bool hardReset)
     num_minigames = Minigame_Count();
     selected_minigame_index = 0;
 
+    selected_minigame_index = 1;
+    Menu_PlayMinigame();
+
     Menu_Draw();
     Menu_DrawTitle();
 
     while (1)
     {
-        u16 joy_state = JOY_readJoypad(JOY_1);
+        // u16 joy_state = JOY_readJoypad(JOY_1);
 
-        if (joy_state & BUTTON_RIGHT && !(last_joy_state & BUTTON_RIGHT)) {
-            selected_minigame_index++;
+        // if (joy_state & BUTTON_RIGHT && !(last_joy_state & BUTTON_RIGHT)) {
+        //     selected_minigame_index++;
 
-            if (selected_minigame_index == num_minigames) {
-                selected_minigame_index = 0;
-            }
+        //     if (selected_minigame_index == num_minigames) {
+        //         selected_minigame_index = 0;
+        //     }
 
-            Menu_DrawTitle();
-        }
+        //     Menu_DrawTitle();
+        // }
 
-        if (joy_state & BUTTON_LEFT && !(last_joy_state & BUTTON_LEFT)) {
+        // if (joy_state & BUTTON_LEFT && !(last_joy_state & BUTTON_LEFT)) {
 
-            if (selected_minigame_index == 0) {
-                selected_minigame_index = num_minigames - 1;
-            } else {
-                selected_minigame_index--;
-            }
+        //     if (selected_minigame_index == 0) {
+        //         selected_minigame_index = num_minigames - 1;
+        //     } else {
+        //         selected_minigame_index--;
+        //     }
 
-            Menu_DrawTitle();
-        }
+        //     Menu_DrawTitle();
+        // }
 
-        if (joy_state & BUTTON_START) {
-            Menu_PlayMinigame();
-        }
+        // if (joy_state & BUTTON_START) {
+        //     Menu_PlayMinigame();
+        // }
 
-        last_joy_state = joy_state;
-        SYS_doVBlankProcess();
+        // last_joy_state = joy_state;
+        // SYS_doVBlankProcess();
     }
 
     return 0;
